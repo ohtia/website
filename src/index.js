@@ -1,7 +1,13 @@
 // Serves public/ with security and cache headers, and sends every other ohtia.com host
 // (the apex domain or any subdomain) to https://www.ohtia.com with a
-// permanent redirect.
+// permanent redirect. The package repositories host is the exception: its
+// requests go unchanged to the R2 bucket bound to it.
 const CANONICAL_HOST = "www.ohtia.com";
+
+// The *.ohtia.com/* route also matches this host, and a Worker route runs
+// before the bucket's custom domain. Passing the request through sends it to
+// the bucket, which answers with its own status, body and headers.
+const PACKAGES_HOST = "packages.ohtia.com";
 
 const SECURITY_HEADERS = {
   // HTTPS only, for one year, on ohtia.com and every subdomain.
@@ -50,6 +56,7 @@ function withSecurityHeaders(response) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.hostname === PACKAGES_HOST) return fetch(request);
     if (isOtherOhtiaHost(url.hostname)) {
       url.protocol = "https:";
       url.hostname = CANONICAL_HOST;
