@@ -1,7 +1,17 @@
 {
   "name": "ohtia-website",
+  "main": "src/index.js",
   "compatibility_date": "2026-11-24",
   "assets": {
-    "directory": "./public"
-  }
+    "directory": "./public",
+    "binding": "ASSETS",
+    // Run the script before serving files, so other hosts are redirected
+    // even when the path matches a file in public/.
+    "run_worker_first": true
+  },
+  "routes": [
+    { "pattern": "www.ohtia.com", "custom_domain": true },
+    { "pattern": "ohtia.com", "custom_domain": true },
+    { "pattern": "*.ohtia.com/*", "zone_name": "ohtia.com" }
+  ]
 }
