@@ -234,6 +234,7 @@ section.panel .stages li::before { background: var(--surface-panel); }
 .principle svg { width: 22px; height: 22px; margin-bottom: 10px; }
 
 /* Download */
+.dl-intro { color: var(--content-secondary); margin: 0; }
 .dl-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 48px; align-items: start; }
 @media (max-width: 860px) { .dl-grid { grid-template-columns: minmax(0, 1fr); } }
 .table-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: var(--r-medium); background: var(--surface-page); }
@@ -266,6 +267,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 32px; justify-content: space
 footer .cols { display: flex; gap: 48px; flex-wrap: wrap; }
 footer .footer-title { font: 600 13px/20px var(--font-ui); color: var(--content-primary); margin: 0 0 10px; }
 footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+footer .footer-legal { margin-top: 8px; }
 footer .brand { font-size: 16px; margin-bottom: 8px; color: var(--content-primary); }
 
 @media (prefers-reduced-motion: reduce) { * { transition-duration: 0ms !important; } }
