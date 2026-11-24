@@ -5,6 +5,8 @@
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",
+    // Unknown paths get public/404.html with status 404.
+    "not_found_handling": "404-page",
     // Run the script before serving files, so other hosts are redirected
     // even when the path matches a file in public/.
     "run_worker_first": true

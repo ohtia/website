@@ -1,4 +1,4 @@
-// Serves public/ with security headers, and sends every other ohtia.com host
+// Serves public/ with security and cache headers, and sends every other ohtia.com host
 // (the apex domain or any subdomain) to https://www.ohtia.com with a
 // permanent redirect.
 const CANONICAL_HOST = "www.ohtia.com";
@@ -17,6 +17,20 @@ const SECURITY_HEADERS = {
     "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()",
   "Cross-Origin-Opener-Policy": "same-origin",
 };
+
+// How long browsers may reuse a file without asking again. Fonts never change
+// under the same name; images rarely do. Pages, styles, robots.txt and the
+// sitemap keep the default (revalidate on every visit), so a deploy shows up
+// immediately.
+const CACHE_RULES = [
+  { test: (path) => path.startsWith("/assets/fonts/"), value: "public, max-age=31536000, immutable" },
+  { test: (path) => path.startsWith("/assets/") || path === "/favicon.ico", value: "public, max-age=604800" },
+];
+
+function cacheControlFor(path) {
+  const rule = CACHE_RULES.find((r) => r.test(path));
+  return rule ? rule.value : null;
+}
 
 function isOtherOhtiaHost(hostname) {
   return (
@@ -42,6 +56,9 @@ export default {
       url.port = "";
       return withSecurityHeaders(Response.redirect(url.toString(), 301));
     }
-    return withSecurityHeaders(await env.ASSETS.fetch(request));
+    const response = withSecurityHeaders(await env.ASSETS.fetch(request));
+    const cacheControl = response.status === 200 ? cacheControlFor(url.pathname) : null;
+    if (cacheControl) response.headers.set("Cache-Control", cacheControl);
+    return response;
   },
 };

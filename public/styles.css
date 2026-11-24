@@ -139,6 +139,7 @@ h1 {
 .cta-note { margin-top: 16px; font-size: 14px; color: var(--content-secondary); }
 
 .hero-visual { min-width: 0; }
+.hero.not-found { padding-block: 96px 128px; }
 
 /* ---------- App mockup ---------- */
 .app {
