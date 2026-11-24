@@ -9,6 +9,8 @@
 <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#151411" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://www.ohtia.com/">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="assets/glasses.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -21,6 +23,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="#top"><img src="assets/glasses.svg" alt="">Ohtia</a>
@@ -28,14 +31,15 @@
       <a href="#voices">How it works</a>
       <a href="#agents">Agents</a>
       <a href="#principles">Principles</a>
-      <a href="#download">Download</a>
+      <a class="nav-download" href="#download">Download</a>
       <a class="gh" href="https://github.com/ohtia/ohtia">GitHub</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero v-app" id="hero">
+<div id="content" tabindex="-1"></div>
+  <section class="hero" id="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <div class="eyebrow">
@@ -44,7 +48,7 @@
           <span class="chip">Pronounced “oh-tee-ah”</span>
         </div>
         <h1>A research team on your desktop.<br> The research stays&nbsp;yours.</h1>
-        <p class="lede" id="lede">Ohtia is an open-source desktop workspace for theses and scientific papers. Keep your projects on your computer, connect your own AI and search services, and build every argument on evidence you can trace.</p>
+        <p class="lede">Ohtia is an open-source desktop workspace for theses and scientific papers. Keep your projects on your computer, connect your own AI and search services, and build every argument on evidence you can trace.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#download">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3"/><path d="m7 10 5 5 5-5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>
@@ -94,6 +98,7 @@
           </div>
           <p class="caption">Example project. Draft editing and the source library are planned; conversations, research plans and project memory are in 0.2.0.</p>
         </div>
+      </div>
     </div>
   </section>
 
@@ -189,10 +194,10 @@
       <div>
         <p class="kicker">Download</p>
         <h2>Ohtia 0.2.0 for Linux</h2>
-        <p style="color:var(--content-secondary);margin:0">Signed packages for x86-64 and ARM64, tested on GNOME and KDE Plasma under Wayland.</p>
+        <p style="color:var(--content-secondary);margin:0">Packages for x86-64 and ARM64, tested on GNOME and KDE Plasma under Wayland.</p>
         <ul class="facts">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span><b>Your own AI account.</b> Requests use your ChatGPT plan or your Anthropic or OpenAI API billing.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span><b>Verify what you install.</b> RPM packages carry an embedded signature. Check DEB packages against <code>release-digests.json</code>.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span><b>Verify what you install.</b> RPM packages carry an embedded signature. DEB packages carry no signature: check them against <a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/release-digests.json"><code>release-digests.json</code></a>.</span></li>
         </ul>
         <div class="notice" role="note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
@@ -204,10 +209,10 @@
           <table>
             <thead><tr><th>Distribution</th><th>x86-64</th><th>ARM64</th></tr></thead>
             <tbody>
-              <tr><td>Fedora 45</td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-x64-fedora-45.rpm">.rpm</a></td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-arm64-fedora-45.rpm">.rpm</a></td></tr>
-              <tr><td>Fedora 44</td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-x64-fedora-44.rpm">.rpm</a></td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-arm64-fedora-44.rpm">.rpm</a></td></tr>
-              <tr><td>Ubuntu 26.04</td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-x64-ubuntu-26.04.deb">.deb</a></td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-arm64-ubuntu-26.04.deb">.deb</a></td></tr>
-              <tr><td>Debian 13</td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-x64-debian-13.deb">.deb</a></td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-arm64-debian-13.deb">.deb</a></td></tr>
+              <tr><td>Fedora 45</td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-x64-fedora-45.rpm" aria-label="Download for Fedora 45, x86-64 (.rpm)">.rpm</a></td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-arm64-fedora-45.rpm" aria-label="Download for Fedora 45, ARM64 (.rpm)">.rpm</a></td></tr>
+              <tr><td>Fedora 44</td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-x64-fedora-44.rpm" aria-label="Download for Fedora 44, x86-64 (.rpm)">.rpm</a></td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-arm64-fedora-44.rpm" aria-label="Download for Fedora 44, ARM64 (.rpm)">.rpm</a></td></tr>
+              <tr><td>Ubuntu 26.04</td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-x64-ubuntu-26.04.deb" aria-label="Download for Ubuntu 26.04, x86-64 (.deb)">.deb</a></td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-arm64-ubuntu-26.04.deb" aria-label="Download for Ubuntu 26.04, ARM64 (.deb)">.deb</a></td></tr>
+              <tr><td>Debian 13</td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-x64-debian-13.deb" aria-label="Download for Debian 13, x86-64 (.deb)">.deb</a></td><td><a href="https://github.com/ohtia/ohtia/releases/download/v0.2.0/ohtia-0.2.0-linux-arm64-debian-13.deb" aria-label="Download for Debian 13, ARM64 (.deb)">.deb</a></td></tr>
             </tbody>
           </table>
         </div>
@@ -239,8 +244,8 @@
       <div style="margin-top:8px">© 2026 Adrian Mastronardi &amp; Mónica Pené · MIT License</div>
     </div>
     <div class="cols">
-      <div><h4>Product</h4><ul><li><a href="#download">Download</a></li><li><a href="https://github.com/ohtia/ohtia/releases">Releases</a></li><li><a href="https://github.com/ohtia/ohtia/blob/main/docs/product-roadmap.md">Roadmap</a></li></ul></div>
-      <div><h4>Project</h4><ul><li><a href="https://github.com/ohtia/ohtia">GitHub</a></li><li><a href="https://github.com/ohtia/ohtia/blob/main/CONTRIBUTING.md">Contributing</a></li><li><a href="https://github.com/ohtia/ohtia/blob/main/SECURITY.md">Security</a></li></ul></div>
+      <div><h2 class="footer-title">Product</h2><ul><li><a href="#download">Download</a></li><li><a href="https://github.com/ohtia/ohtia/releases">Releases</a></li><li><a href="https://github.com/ohtia/ohtia/blob/main/docs/product-roadmap.md">Roadmap</a></li></ul></div>
+      <div><h2 class="footer-title">Project</h2><ul><li><a href="https://github.com/ohtia/ohtia">GitHub</a></li><li><a href="https://github.com/ohtia/ohtia/blob/main/CONTRIBUTING.md">Contributing</a></li><li><a href="https://github.com/ohtia/ohtia/blob/main/SECURITY.md">Security</a></li></ul></div>
     </div>
   </div>
 </footer>
