@@ -221,24 +221,50 @@
       </div>
     </div>
     <div class="wrap repo" id="repository">
-      <h3>Install from the package repository</h3>
-      <p>The packages above add the repository themselves. To install Ohtia through your package manager instead, add the repository first. Its key has the fingerprint <code>72DB B89D 7888 7652 52D9 90B2 2942 9576 9A66 B8F6</code>; your package manager shows it when it first uses the key.</p>
+      <h3>Install and receive updates</h3>
+      <p>Download the package for your system from the table and install it from the folder where you saved it. The package adds the signed Ohtia package repository, so later versions arrive with your system’s updates.</p>
+<pre><code># Ubuntu 26.04
+sudo apt install ./ohtia-0.2.1-linux-x64-ubuntu-26.04.deb
+
+# Debian 13
+sudo apt install ./ohtia-0.2.1-linux-x64-debian-13.deb
+
+# Fedora 45
+sudo dnf install ./ohtia-0.2.1-linux-x64-fedora-45.rpm</code></pre>
+      <p>These names are the x86-64 packages. On ARM64 or Fedora 44, use the name of the file you downloaded.</p>
+      <h3>Add the repository by hand</h3>
+      <p>To install Ohtia through your package manager without downloading a package first, add the repository yourself. Its key has the fingerprint <code>72DB B89D 7888 7652 52D9 90B2 2942 9576 9A66 B8F6</code>; your package manager shows it when it first uses the key.</p>
       <div class="faq">
-        <details><summary>Ubuntu 26.04 and Debian 13</summary>
+        <details><summary>Ubuntu 26.04</summary>
 <pre><code>sudo wget -qO /usr/share/keyrings/ohtia-archive-keyring.asc \
   https://raw.githubusercontent.com/ohtia/ohtia/v0.2.1/config/release/signing-key.asc
+
 sudo tee /etc/apt/sources.list.d/ohtia.sources &lt;&lt;'EOF'
 Types: deb
 URIs: https://packages.ohtia.com/stable/ubuntu/
 Suites: ./
 Signed-By: /usr/share/keyrings/ohtia-archive-keyring.asc
 EOF
+
 sudo apt update &amp;&amp; sudo apt install ohtia</code></pre>
-          <p>On Debian, write <code>debian</code> instead of <code>ubuntu</code> in the <code>URIs</code> line.</p>
+        </details>
+        <details><summary>Debian 13</summary>
+<pre><code>sudo wget -qO /usr/share/keyrings/ohtia-archive-keyring.asc \
+  https://raw.githubusercontent.com/ohtia/ohtia/v0.2.1/config/release/signing-key.asc
+
+sudo tee /etc/apt/sources.list.d/ohtia.sources &lt;&lt;'EOF'
+Types: deb
+URIs: https://packages.ohtia.com/stable/debian/
+Suites: ./
+Signed-By: /usr/share/keyrings/ohtia-archive-keyring.asc
+EOF
+
+sudo apt update &amp;&amp; sudo apt install ohtia</code></pre>
         </details>
         <details><summary>Fedora 44 and 45</summary>
 <pre><code>sudo curl -fsSL -o /etc/pki/rpm-gpg/RPM-GPG-KEY-ohtia \
   https://raw.githubusercontent.com/ohtia/ohtia/v0.2.1/config/release/signing-key.asc
+
 sudo tee /etc/yum.repos.d/ohtia.repo &lt;&lt;'EOF'
 [ohtia]
 name=Ohtia
@@ -248,10 +274,12 @@ gpgcheck=1
 repo_gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ohtia
 EOF
+
 sudo dnf install ohtia</code></pre>
           <p>If Ohtia is already installed from a downloaded package, run <code>sudo dnf upgrade ohtia</code> instead.</p>
         </details>
       </div>
+    </div>
     </div>
   </section>
 

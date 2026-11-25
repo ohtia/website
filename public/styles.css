@@ -264,9 +264,12 @@ td a { font-weight: 500; }
 
 .repo { margin-top: 48px; }
 .repo h3 { margin: 0 0 8px; }
+.repo h3 + p ~ h3 { margin-top: 32px; }
+.repo > pre + p { margin-top: -4px; font-size: 14px; }
 .repo > p { max-width: 72ch; color: var(--content-secondary); margin: 0 0 16px; }
 .repo pre { overflow-x: auto; margin: 0 0 12px; padding: 14px 16px; border: 1px solid var(--border-subtle); border-radius: var(--r-medium); background: var(--surface-page); font-size: 14px; line-height: 22px; }
 .repo pre code { font-size: inherit; }
+.repo > pre { max-width: 760px; }
 
 /* Footer */
 footer { border-top: 1px solid var(--border-subtle); padding-block: 48px; font-size: 14px; color: var(--content-secondary); }
