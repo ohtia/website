@@ -56,7 +56,11 @@ function withSecurityHeaders(response) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.hostname === PACKAGES_HOST) return fetch(request);
+    if (url.hostname === PACKAGES_HOST) {
+      // The repositories have no directory listing; their root points people to the install steps.
+      if (url.pathname === "/") return withSecurityHeaders(Response.redirect(`https://${CANONICAL_HOST}/#repository`, 302));
+      return fetch(request);
+    }
     if (isOtherOhtiaHost(url.hostname)) {
       url.protocol = "https:";
       url.hostname = CANONICAL_HOST;
